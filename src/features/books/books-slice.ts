@@ -5,7 +5,7 @@ interface BooksState {
 }
 
 const initialState: BooksState = {
-  booksArray: []
+  booksArray: [{name: "Сага о Форсайтах", author: "John Galsworthy"}]
 }
 
 const booksSlice = createSlice({
