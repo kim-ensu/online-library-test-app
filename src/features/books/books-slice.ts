@@ -28,6 +28,11 @@ const apiSlice = createApi({
           return `&maxResults=${limit}`;
         },
       }),
+      fetchCategory: builder.query<Book[], string | void>({
+        query(category = "all") {
+          return `&q=subject:${category}`;
+        },
+      }),
     };
   },
 });
