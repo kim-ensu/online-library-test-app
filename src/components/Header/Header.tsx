@@ -23,7 +23,6 @@ const Header: FC<Props> = (props) => {
             <SearchIcon />
           </IconButton>
         </Paper>
-        <input type="text" />
         <div className="header-filters">
           <label htmlFor="categories">Categories</label>
           <select id="categories" required>
