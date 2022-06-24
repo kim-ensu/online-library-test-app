@@ -11,9 +11,20 @@ const Header: FC<Props> = (props) => {
         <input type="text" />
         <div className="header-filters">
           <label htmlFor="categories">Categories</label>
-          <input type="text" id="categories" />
-          <label htmlFor="categories">Categories</label>
-          <input type="text" id="categories" />
+          <select id="categories" required>
+            <option value="all">all</option>
+            <option value="art">art</option>
+            <option value="biography">biography</option>
+            <option value="computers">computers</option>
+            <option value="history">history</option>
+            <option value="medical">medical</option>
+            <option value="poetry">poetry</option>
+          </select>
+          <label htmlFor="sortingBy">Sorting By</label>
+          <select id="sortingBy" required>
+            <option value="relevance">relevance</option>
+            <option value="newest">newest</option>
+          </select>
         </div>
       </div>
     </div>
