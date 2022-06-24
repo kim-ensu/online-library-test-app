@@ -1,5 +1,9 @@
 import React, { FC } from "react";
 import "./Header.css";
+import Paper from "@mui/material/Paper";
+import InputBase from "@mui/material/InputBase";
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
 
 type Props = {};
 
@@ -7,7 +11,18 @@ const Header: FC<Props> = (props) => {
   return (
     <div className="header">
       <div className="header-content-wrp">
-        <h1>Search for books</h1>
+        <Paper
+          component="form"
+          sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: "100%" }}>
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="Search Books"
+            inputProps={{ "aria-label": "search google maps" }}
+          />
+          <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+        </Paper>
         <input type="text" />
         <div className="header-filters">
           <label htmlFor="categories">Categories</label>
