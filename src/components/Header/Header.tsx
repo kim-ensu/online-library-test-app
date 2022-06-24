@@ -1,13 +1,27 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import "./Header.css";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 type Props = {};
 
 const Header: FC<Props> = (props) => {
+  const [category, setCategory] = useState<string>("all");
+  const [sortingBy, setsortingBy] = useState<string>("relevance");
+
+  const handleChangeCategory = (event: SelectChangeEvent): void => {
+    setCategory(event.target.value);
+  };
+
+  const handleChangeSortingBy = (event: SelectChangeEvent): void => {
+    setsortingBy(event.target.value);
+  };
+
   return (
     <div className="header">
       <div className="header-content-wrp">
@@ -23,22 +37,36 @@ const Header: FC<Props> = (props) => {
             <SearchIcon />
           </IconButton>
         </Paper>
+
         <div className="header-filters">
           <label htmlFor="categories">Categories</label>
-          <select id="categories" required>
-            <option value="all">all</option>
-            <option value="art">art</option>
-            <option value="biography">biography</option>
-            <option value="computers">computers</option>
-            <option value="history">history</option>
-            <option value="medical">medical</option>
-            <option value="poetry">poetry</option>
-          </select>
+          <FormControl id="categories" sx={{ m: 1, minWidth: 120, backgroundColor: "white" }}>
+            <Select
+              value={category}
+              onChange={handleChangeCategory}
+              displayEmpty
+              inputProps={{ "aria-label": "Without label" }}>
+              <MenuItem value="all">all</MenuItem>
+              <MenuItem value="art">art</MenuItem>
+              <MenuItem value="biography">biography</MenuItem>
+              <MenuItem value="computers">computers</MenuItem>
+              <MenuItem value="history">history</MenuItem>
+              <MenuItem value="medical">medical</MenuItem>
+              <MenuItem value="poetry">poetry</MenuItem>
+            </Select>
+          </FormControl>
+
           <label htmlFor="sortingBy">Sorting By</label>
-          <select id="sortingBy" required>
-            <option value="relevance">relevance</option>
-            <option value="newest">newest</option>
-          </select>
+          <FormControl id="sortingBy" sx={{ m: 1, minWidth: 120, backgroundColor: "white" }}>
+            <Select
+              value={sortingBy}
+              onChange={handleChangeSortingBy}
+              displayEmpty
+              inputProps={{ "aria-label": "Without label" }}>
+              <MenuItem value="relevance">relevance</MenuItem>
+              <MenuItem value="newest">newest</MenuItem>
+            </Select>
+          </FormControl>
         </div>
       </div>
     </div>
