@@ -3,32 +3,29 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const BOOKS_API_KEY: string = process.env.REACT_APP_LIBRARY_API_KEY!;
 
-interface Book {
-  id: string;
-  name: string;
-  author: string;
-  image: {
-    url: string;
-  };
+interface Books {
+  // items: object;
+  // id: string;
+  // name: string;
+  // author: string;
+  // image: {
+  //   url: string;
+  // };
 }
 
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://www.googleapis.com/books/v1/volumes?key=${BOOKS_API_KEY}`,
-    // prepareHeaders: (headers) => {
-    //   headers.set("b-api-key", BOOKS_API_KEY);
-    //   return headers;
-    // },
+    baseUrl: `https://www.googleapis.com/books/v1`,
   }),
   endpoints(builder) {
     return {
-      fetchBooks: builder.query<Book[], number | void>({
+      fetchBooks: builder.query<any, number | void>({
         query(limit = 30) {
-          return `&maxResults=${limit}`;
+          return `volumes?key=${BOOKS_API_KEY}&maxResults=${limit}&q=flowers`;
         },
       }),
-      fetchCategory: builder.query<Book[], string | void>({
+      fetchCategory: builder.query<any, string | void>({
         query(category = "all") {
           return `&q=subject:${category}`;
         },
