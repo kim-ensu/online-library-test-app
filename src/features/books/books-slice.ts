@@ -3,14 +3,21 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const BOOKS_API_KEY: string = process.env.REACT_APP_LIBRARY_API_KEY!;
 
-interface Books {
-  // items: object;
-  // id: string;
-  // name: string;
-  // author: string;
-  // image: {
-  //   url: string;
-  // };
+interface BooksList {
+  items: Array<Book>;
+}
+
+export interface Book {
+  id: string;
+  volumeInfo: {
+    title: string;
+    authors: string[];
+    description: string;
+    categories: string[];
+    imageLinks: {
+      thumbnail: string;
+    };
+  };
 }
 
 export const apiSlice = createApi({
@@ -20,12 +27,12 @@ export const apiSlice = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchBooks: builder.query<any, number | void>({
+      fetchBooks: builder.query<BooksList, number | void>({
         query(limit = 30) {
           return `volumes?key=${BOOKS_API_KEY}&maxResults=${limit}&q=flowers`;
         },
       }),
-      fetchCategory: builder.query<any, string | void>({
+      fetchCategory: builder.query<BooksList, string | void>({
         query(category = "all") {
           return `&q=subject:${category}`;
         },
