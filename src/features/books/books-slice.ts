@@ -12,7 +12,7 @@ interface Book {
   };
 }
 
-const apiSlice = createApi({
+export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: `https://www.googleapis.com/books/v1/volumes?key=${BOOKS_API_KEY}`,
@@ -36,6 +36,8 @@ const apiSlice = createApi({
     };
   },
 });
+
+export const { useFetchBooksQuery, useFetchCategoryQuery } = apiSlice;
 
 // interface BooksState {
 //   booksArray: { name: string; author: string }[];
