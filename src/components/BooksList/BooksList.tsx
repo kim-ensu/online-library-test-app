@@ -1,13 +1,12 @@
 import React, { FC } from "react";
 import { useAppDispatch, useAppSelector } from "app/hooks";
-import { useFetchBooksQuery, useFetchCategoryQuery } from "features/books/books-api-slice";
+import { useFetchCategoryQuery } from "features/books/books-api-slice";
 import { Book } from "features/books/books-api-slice";
 
 type Props = {};
 
 const BooksList: FC<Props> = (props) => {
-  const { data, isFetching } = useFetchBooksQuery();
-  console.log(data);
+  // const { data, isFetching } = useFetchBooksQuery();
 
   // const booksArray = useAppSelector((state) => state.books.booksArray);
   return (
