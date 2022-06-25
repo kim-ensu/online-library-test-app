@@ -3,13 +3,19 @@ import "./Header.css";
 import SearchField from "components/SearchField/SearchField";
 import OptionsList from "components/OptionsList/OptionsList";
 
-const categories = {
+interface IOptionsList {
+  id: string;
+  label: string;
+  values: Array<string>;
+}
+
+const categories: IOptionsList = {
   id: "categories",
   label: "Categories",
   values: ["all", "art", "biography", "computers", "history", "medical", "poetry"],
 };
 
-const sortingBy = {
+const sortingBy: IOptionsList = {
   id: "sortingBy",
   label: "SortingBy",
   values: ["relevance", "newest"],
