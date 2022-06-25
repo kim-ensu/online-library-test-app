@@ -38,21 +38,6 @@ export const apiSlice = createApi({
           return `volumes?key=${BOOKS_API_KEY}&q=${searchField}+subject:${category}&orderBy:${sortingBy}&maxResults=${booksLoaded}`;
         },
       }),
-      // fetchMoreBooks: builder.query<BooksList, number>({
-      //   query(limit = 30) {
-      //     return `&maxResults=${limit + 30}`;
-      //   },
-      // }),
-      // fetchCategory: builder.query<BooksList, string>({
-      //   query(category = "all") {
-      //     return `&subject:${category}`;
-      //   },
-      // }),
-      // fetchSortingBy: builder.query<BooksList, string>({
-      //   query(sortingBy = "relevance") {
-      //     return `&orderBy:${sortingBy}`;
-      //   },
-      // }),
     };
   },
 });
