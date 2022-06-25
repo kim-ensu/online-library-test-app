@@ -1,9 +1,11 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import "./Header.css";
 import SearchField from "components/SearchField/SearchField";
 import OptionsList from "components/OptionsList/OptionsList";
 import { ISearchFields, IOptionsList } from "interfaces";
 import { useFetchSearchedBooksQuery } from "features/books/books-api-slice";
+import { useAppDispatch } from "app/hooks";
+import { getBooks } from "features/books/books-slice";
 
 const categories: IOptionsList = {
   id: "categories",
@@ -20,6 +22,8 @@ const sortingBy: IOptionsList = {
 type Props = {};
 
 const Header: FC<Props> = (props) => {
+  const dispatch = useAppDispatch();
+
   const [searchValues, setSearchValues] = useState<ISearchFields>({
     searchField: "flowers",
     category: "all",
@@ -29,6 +33,12 @@ const Header: FC<Props> = (props) => {
 
   const { data, isFetching } = useFetchSearchedBooksQuery(searchValues);
   console.log(data);
+
+  useEffect(() => {
+    if (!isFetching) {
+      dispatch(getBooks(data!));
+    }
+  }, [data]);
 
   return (
     <div className="header">
