@@ -5,24 +5,39 @@ type Props = {};
 
 const BooksList: FC<Props> = (props) => {
   const booksList = useAppSelector((state) => state.books.booksArray);
+  console.log(booksList);
 
   return (
     <>
+      <span>Total Result {booksList.length}</span>
       {booksList.length ? (
-        <h1>Search and read your favourite books</h1>
+        <ul>
+          {booksList.map((book) => (
+            <li key={book.id}>
+              <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
+
+              {book.volumeInfo.categories === undefined ? (
+                <div></div>
+              ) : (
+                <span>{book.volumeInfo.categories[0]}</span>
+              )}
+
+              <span>{book.volumeInfo.title}</span>
+
+              {book.volumeInfo.authors === undefined ? (
+                <div></div>
+              ) : (
+                <ul>
+                  {book.volumeInfo.authors.map((author, index) => (
+                    <li key={book.volumeInfo.title}>{author}</li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
       ) : (
-        booksList.map((book) => (
-          <div key={book.id}>
-            <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
-            <span>{book.volumeInfo.categories[0]}</span>
-            <span>{book.volumeInfo.title}</span>
-            <ul>
-              {book.volumeInfo.authors.map((author) => (
-                <li>{author}</li>
-              ))}
-            </ul>
-          </div>
-        ))
+        <h1>Search and read your favourite books</h1>
       )}
     </>
   );
