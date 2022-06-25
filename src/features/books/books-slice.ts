@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IBooksState } from "interfaces";
+import { IBooksState, IBooksData } from "interfaces";
 
 const initialState: IBooksState = {
   booksArray: [],
@@ -9,7 +9,9 @@ const booksSlice = createSlice({
   name: "books",
   initialState,
   reducers: {
-    getBooks: (state) => {},
+    getBooks: (state, action: PayloadAction<IBooksData>) => {
+      state.booksArray = action.payload.items;
+    },
   },
 });
 

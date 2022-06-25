@@ -3,6 +3,7 @@ import "./Header.css";
 import SearchField from "components/SearchField/SearchField";
 import OptionsList from "components/OptionsList/OptionsList";
 import { ISearchFields, IOptionsList } from "interfaces";
+import { useFetchSearchedBooksQuery } from "features/books/books-api-slice";
 
 const categories: IOptionsList = {
   id: "categories",
@@ -20,11 +21,14 @@ type Props = {};
 
 const Header: FC<Props> = (props) => {
   const [searchValues, setSearchValues] = useState<ISearchFields>({
-    searchField: "",
+    searchField: "flowers",
     category: "all",
     sortingBy: "relevance",
     booksLoaded: 30,
   });
+
+  const { data, isFetching } = useFetchSearchedBooksQuery(searchValues);
+  console.log(data);
 
   return (
     <div className="header">
