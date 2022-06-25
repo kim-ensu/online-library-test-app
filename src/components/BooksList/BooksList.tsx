@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useAppDispatch, useAppSelector } from "app/hooks";
-import { useFetchBooksQuery, useFetchCategoryQuery } from "features/books/books-slice";
-import { Book } from "features/books/books-slice";
+import { useFetchBooksQuery, useFetchCategoryQuery } from "features/books/books-api-slice";
+import { Book } from "features/books/books-api-slice";
 
 type Props = {};
 
