@@ -27,21 +27,36 @@ export const apiSlice = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchBooks: builder.query<BooksList, number | void>({
-        query(limit = 30) {
-          return `volumes?key=${BOOKS_API_KEY}&maxResults=${limit}&q=flowers`;
+      fetchSearchedBooks: builder.query<BooksList, string | void>({
+        query(search: string) {
+          return `volumes?key=${BOOKS_API_KEY}&q=${search}`;
         },
       }),
-      fetchCategory: builder.query<BooksList, string | void>({
+      fetchMoreBooks: builder.query<BooksList, number>({
+        query(limit = 30) {
+          return `&maxResults=${limit + 30}`;
+        },
+      }),
+      fetchCategory: builder.query<BooksList, string>({
         query(category = "all") {
-          return `&q=subject:${category}`;
+          return `&subject:${category}`;
+        },
+      }),
+      fetchSortingBy: builder.query<BooksList, string>({
+        query(sortingBy = "relevance") {
+          return `&orderBy:${sortingBy}`;
         },
       }),
     };
   },
 });
 
-export const { useFetchBooksQuery, useFetchCategoryQuery } = apiSlice;
+export const {
+  useFetchSearchedBooksQuery,
+  useFetchMoreBooksQuery,
+  useFetchCategoryQuery,
+  useFetchSortingByQuery,
+} = apiSlice;
 
 // interface BooksState {
 //   booksArray: { name: string; author: string }[];
