@@ -19,6 +19,13 @@ export interface Book {
   };
 }
 
+interface SearchFields {
+  searchField: string;
+  category: string;
+  sortingBy: string;
+  booksLoaded: number;
+}
+
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
@@ -26,26 +33,26 @@ export const apiSlice = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchSearchedBooks: builder.query<BooksList, string | void>({
-        query(search: string) {
+      fetchSearchedBooks: builder.query<BooksList, SearchFields>({
+        query(search) {
           return `volumes?key=${BOOKS_API_KEY}&q=${search}`;
         },
       }),
-      fetchMoreBooks: builder.query<BooksList, number>({
-        query(limit = 30) {
-          return `&maxResults=${limit + 30}`;
-        },
-      }),
-      fetchCategory: builder.query<BooksList, string>({
-        query(category = "all") {
-          return `&subject:${category}`;
-        },
-      }),
-      fetchSortingBy: builder.query<BooksList, string>({
-        query(sortingBy = "relevance") {
-          return `&orderBy:${sortingBy}`;
-        },
-      }),
+      // fetchMoreBooks: builder.query<BooksList, number>({
+      //   query(limit = 30) {
+      //     return `&maxResults=${limit + 30}`;
+      //   },
+      // }),
+      // fetchCategory: builder.query<BooksList, string>({
+      //   query(category = "all") {
+      //     return `&subject:${category}`;
+      //   },
+      // }),
+      // fetchSortingBy: builder.query<BooksList, string>({
+      //   query(sortingBy = "relevance") {
+      //     return `&orderBy:${sortingBy}`;
+      //   },
+      // }),
     };
   },
 });
