@@ -34,8 +34,8 @@ export const apiSlice = createApi({
   endpoints(builder) {
     return {
       fetchSearchedBooks: builder.query<BooksList, SearchFields>({
-        query(search) {
-          return `volumes?key=${BOOKS_API_KEY}&q=${search}`;
+        query({ searchField, category, sortingBy, booksLoaded }) {
+          return `volumes?key=${BOOKS_API_KEY}&q=${searchField}+subject:${category}&orderBy:${sortingBy}&maxResults=${booksLoaded}`;
         },
       }),
       // fetchMoreBooks: builder.query<BooksList, number>({
@@ -57,9 +57,4 @@ export const apiSlice = createApi({
   },
 });
 
-export const {
-  useFetchSearchedBooksQuery,
-  useFetchMoreBooksQuery,
-  useFetchCategoryQuery,
-  useFetchSortingByQuery,
-} = apiSlice;
+export const { useFetchSearchedBooksQuery } = apiSlice;
