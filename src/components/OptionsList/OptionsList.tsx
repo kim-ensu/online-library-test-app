@@ -19,7 +19,7 @@ const OptionsList: FC<Props> = ({ id, label, values }) => {
 
   return (
     <div>
-      <label htmlFor={id}>${label}</label>
+      <label htmlFor={id}>{label}</label>
       <FormControl id={id} sx={{ m: 1, minWidth: 120, backgroundColor: "white" }}>
         <Select
           value={currentValue}
@@ -27,7 +27,7 @@ const OptionsList: FC<Props> = ({ id, label, values }) => {
           displayEmpty
           inputProps={{ "aria-label": "Without label" }}>
           {values.map((value) => (
-            <MenuItem value={value}>${value}</MenuItem>
+            <MenuItem value={value}>{value}</MenuItem>
           ))}
         </Select>
       </FormControl>
