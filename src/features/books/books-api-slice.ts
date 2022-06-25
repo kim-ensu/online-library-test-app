@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IBooksList, ISearchFields } from "interfaces";
+import { IBooksData, ISearchFields } from "interfaces";
 
 const BOOKS_API_KEY: string = process.env.REACT_APP_LIBRARY_API_KEY!;
 
@@ -10,7 +10,7 @@ export const apiSlice = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchSearchedBooks: builder.query<IBooksList, ISearchFields>({
+      fetchSearchedBooks: builder.query<IBooksData, ISearchFields>({
         query({ searchField, category, sortingBy, booksLoaded }) {
           return `volumes?key=${BOOKS_API_KEY}&q=${searchField}+subject:${category}&orderBy:${sortingBy}&maxResults=${booksLoaded}`;
         },
