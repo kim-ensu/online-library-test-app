@@ -12,7 +12,9 @@ export const apiSlice = createApi({
     return {
       fetchSearchedBooks: builder.query<IBooksData, ISearchFields>({
         query({ searchField, category, sortingBy, booksLoaded }) {
-          return `volumes?key=${BOOKS_API_KEY}&q=${searchField}+subject:${category}&orderBy:${sortingBy}&maxResults=${booksLoaded}`;
+          return `volumes?q=${searchField}${
+            category === "all" ? "" : `+subject:${category}`
+          }&orderBy:${sortingBy}&maxResults=${booksLoaded}&key=${BOOKS_API_KEY}`;
         },
       }),
     };
