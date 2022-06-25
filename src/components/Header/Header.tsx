@@ -1,13 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import "./Header.css";
 import SearchField from "components/SearchField/SearchField";
 import OptionsList from "components/OptionsList/OptionsList";
-
-interface IOptionsList {
-  id: string;
-  label: string;
-  values: Array<string>;
-}
+import { ISearchFields, IOptionsList } from "interfaces";
 
 const categories: IOptionsList = {
   id: "categories",
@@ -24,6 +19,13 @@ const sortingBy: IOptionsList = {
 type Props = {};
 
 const Header: FC<Props> = (props) => {
+  const [searchValues, setSearchValues] = useState<ISearchFields>({
+    searchField: "",
+    category: "all",
+    sortingBy: "relevance",
+    booksLoaded: 30,
+  });
+
   return (
     <div className="header">
       <div className="header-content-wrp">

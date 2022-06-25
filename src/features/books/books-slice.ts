@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Book } from "./books-api-slice";
+import { IBooksState } from "interfaces";
 
-interface BooksState {
-  booksArray: Array<Book>;
-}
-
-const initialState: BooksState = {
+const initialState: IBooksState = {
   booksArray: [],
 };
 
