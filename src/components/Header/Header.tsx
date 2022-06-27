@@ -1,12 +1,8 @@
-import React, { FC, useState, useEffect, ChangeEvent } from "react";
+import React, { FC } from "react";
 import "./Header.css";
 import SearchField from "components/SearchField/SearchField";
 import OptionsList from "components/OptionsList/OptionsList";
-import { ISearchFields, IOptionsList } from "interfaces";
-import { useFetchSearchedBooksQuery } from "features/books/books-api-slice";
-import { useAppDispatch, useAppSelector } from "app/hooks";
-import { setBooks } from "features/books/books-slice";
-import { SelectChangeEvent } from "@mui/material/Select";
+import { IOptionsList } from "interfaces";
 
 const categories: IOptionsList = {
   name: "category",
