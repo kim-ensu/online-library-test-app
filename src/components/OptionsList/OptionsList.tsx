@@ -5,6 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 type Props = {
+  name: string;
   id: string;
   label: string;
   values: Array<string>;

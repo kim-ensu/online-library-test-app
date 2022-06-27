@@ -5,7 +5,9 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-type Props = {};
+type Props = {
+  name: string;
+};
 
 const SearchField: FC<Props> = (props) => {
   const [value, setValue] = useState<string>("");

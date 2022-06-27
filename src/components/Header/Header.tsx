@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, ChangeEvent } from "react";
 import "./Header.css";
 import SearchField from "components/SearchField/SearchField";
 import OptionsList from "components/OptionsList/OptionsList";
@@ -32,7 +32,14 @@ const Header: FC<Props> = (props) => {
   });
 
   const { data, isFetching } = useFetchSearchedBooksQuery(searchValues);
-  console.log(data);
+
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setSearchValues({
+      ...searchValues,
+      [name]: value,
+    });
+  };
 
   useEffect(() => {
     if (!isFetching) {
@@ -43,11 +50,21 @@ const Header: FC<Props> = (props) => {
   return (
     <div className="header">
       <div className="header-content-wrp">
-        <SearchField />
+        <SearchField name="searchField" />
 
         <div className="header-filters">
-          <OptionsList id={categories.id} label={categories.label} values={categories.values} />
-          <OptionsList id={sortingBy.id} label={sortingBy.label} values={sortingBy.values} />
+          <OptionsList
+            name="category"
+            id={categories.id}
+            label={categories.label}
+            values={categories.values}
+          />
+          <OptionsList
+            name="sortingBy"
+            id={sortingBy.id}
+            label={sortingBy.label}
+            values={sortingBy.values}
+          />
         </div>
       </div>
     </div>
