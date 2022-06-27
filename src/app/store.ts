@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import booksReducer from "../features/books/books-slice";
 import { apiSlice } from "features/books/books-api-slice";
-import booksSearchFields from "features/books/books-search-fields";
+import booksSearchFieldsReducer from "features/books/books-search-fields";
 
 export const store = configureStore({
   reducer: {
     books: booksReducer,
-    booksSearchFields: booksSearchFields,
+    booksSearchFields: booksSearchFieldsReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => {

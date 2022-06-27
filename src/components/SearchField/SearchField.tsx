@@ -4,6 +4,8 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import { useAppDispatch } from "app/hooks";
+import { setSearchField } from "features/books/books-search-fields";
 
 type Props = {
   handleChangeSearch: (e: string) => void;
@@ -11,6 +13,7 @@ type Props = {
 
 const SearchField: FC<Props> = ({ handleChangeSearch }) => {
   const [value, setValue] = useState<string>("");
+  const dispatch = useAppDispatch();
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setValue(e.target.value);
@@ -18,13 +21,13 @@ const SearchField: FC<Props> = ({ handleChangeSearch }) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleChangeSearch(value);
+    dispatch(setSearchField(value));
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      handleChangeSearch(value);
+      dispatch(setSearchField(value));
     }
   };
 
