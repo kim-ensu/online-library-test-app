@@ -30,7 +30,7 @@ const BooksList: FC<Props> = (props) => {
             ))}
           </ul>
           {booksList.length && !isFetching ? (
-            <LoadMoreButton maxLoaded={booksSearchValues.booksLoaded} />
+            <LoadMoreButton startIndex={booksList.length - 1} />
           ) : null}
         </>
       ) : (

@@ -2,16 +2,16 @@ import React, { FC } from "react";
 import "./LoadMoreButton.css";
 import Button from "@mui/material/Button";
 import { useAppDispatch } from "app/hooks";
-import { setMaxLoaded } from "features/books/books-search-fields";
+import { setStartIndexForLoad } from "features/books/books-search-fields";
 
 type Props = {
-  maxLoaded: number;
+  startIndex: number;
 };
 
-const LoadMoreButton: FC<Props> = ({ maxLoaded }) => {
+const LoadMoreButton: FC<Props> = ({ startIndex }) => {
   const dispatch = useAppDispatch();
   const handleClick = () => {
-    dispatch(setMaxLoaded(maxLoaded));
+    dispatch(setStartIndexForLoad(startIndex + 30));
   };
   return (
     <Button onClick={handleClick} variant="contained">
