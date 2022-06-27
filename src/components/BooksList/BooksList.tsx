@@ -6,7 +6,6 @@ type Props = {};
 
 const BooksList: FC<Props> = (props) => {
   const booksList = useAppSelector((state) => state.books.booksArray);
-  console.log(booksList);
 
   return (
     <>

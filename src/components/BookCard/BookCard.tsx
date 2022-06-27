@@ -16,7 +16,11 @@ type Props = {
 const BookCard: FC<Props> = ({ id, bookInfo: { imageLinks, title, categories, authors } }) => {
   return (
     <li key={id} className="bookcard">
-      <img src={imageLinks.thumbnail} alt={title} />
+      {imageLinks === undefined ? (
+        <i>PLACEHOLDER</i>
+      ) : (
+        <img src={imageLinks.thumbnail} alt={title} />
+      )}
 
       {categories === undefined ? (
         <div></div>
