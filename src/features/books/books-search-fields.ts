@@ -22,12 +22,12 @@ const booksSearchFieldsSlice = createSlice({
     setOrderBy: (state, action: PayloadAction<string>) => {
       state.sortingBy = action.payload;
     },
-    setMaxLoaded: (state, action: PayloadAction<number>) => {
-      state.booksLoaded = action.payload;
+    setStartIndexForLoad: (state, action: PayloadAction<number>) => {
+      state.startIndexForLoad = action.payload;
     },
   },
 });
 
-export const { setSearchField, setCategory, setOrderBy, setMaxLoaded } =
+export const { setSearchField, setCategory, setOrderBy, setStartIndexForLoad } =
   booksSearchFieldsSlice.actions;
 export default booksSearchFieldsSlice.reducer;

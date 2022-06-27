@@ -11,10 +11,10 @@ export const apiSlice = createApi({
   endpoints(builder) {
     return {
       fetchSearchedBooks: builder.query<IBooksData, ISearchFields>({
-        query({ searchField, category, sortingBy, booksLoaded }) {
+        query({ searchField, category, sortingBy, startIndexForLoad, amountToLoad }) {
           return `volumes?q=${searchField}${
             category === "all" ? "" : `+subject:${category}`
-          }&orderBy=${sortingBy}&maxResults=${booksLoaded}&key=${BOOKS_API_KEY}`;
+          }&orderBy=${sortingBy}&startIndex=${startIndexForLoad}&maxResults=${amountToLoad}&key=${BOOKS_API_KEY}`;
         },
       }),
     };
