@@ -8,6 +8,7 @@ export interface IBooksState {
 
 interface IBook {
   id: string;
+  etag: string;
   volumeInfo: {
     title: string;
     authors: string[];
