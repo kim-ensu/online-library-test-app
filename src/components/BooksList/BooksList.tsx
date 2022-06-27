@@ -3,7 +3,6 @@ import { useAppSelector, useAppDispatch } from "app/hooks";
 import BookCard from "components/BookCard/BookCard";
 import { addBooks, setBooks } from "features/books/books-slice";
 import { useFetchSearchedBooksQuery } from "features/books/books-api-slice";
-import LoadMoreButton from "components/LoadMoreButton/LoadMoreButton";
 import Button from "@mui/material/Button";
 import { setStartIndexForLoad } from "features/books/books-search-fields";
 
