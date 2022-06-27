@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import "./BookCard.css";
 
 type Props = {
   id: string;
@@ -14,12 +15,16 @@ type Props = {
 
 const BookCard: FC<Props> = ({ id, bookInfo: { imageLinks, title, categories, authors } }) => {
   return (
-    <li key={id}>
+    <li key={id} className="bookcard">
       <img src={imageLinks.thumbnail} alt={title} />
 
-      {categories === undefined ? <div></div> : <span>{categories[0]}</span>}
+      {categories === undefined ? (
+        <div></div>
+      ) : (
+        <span className="bookcard-category">{categories[0]}</span>
+      )}
 
-      <span>{title}</span>
+      <span className="bookcard-title">{title}</span>
 
       {authors === undefined ? (
         <div></div>

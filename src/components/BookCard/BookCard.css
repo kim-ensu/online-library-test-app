@@ -1,0 +1,9 @@
+.bookcard {
+  border: 1px solid black;
+  margin: 15px auto;
+  width: 80%;
+}
+
+.bookcard-category, .bookcard-title {
+  display: block;
+}
