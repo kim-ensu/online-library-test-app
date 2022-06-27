@@ -31,7 +31,9 @@ const OptionsList: FC<Props> = ({ id, label, values, name, handleChangeOptions }
           displayEmpty
           inputProps={{ "aria-label": "Without label" }}>
           {values.map((value) => (
-            <MenuItem value={value}>{value}</MenuItem>
+            <MenuItem key={value} value={value}>
+              {value}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>
