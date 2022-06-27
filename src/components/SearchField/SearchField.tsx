@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent, KeyboardEvent } from "react";
+import React, { FC, useState, ChangeEvent, KeyboardEvent, FormEvent } from "react";
 import "./SearchField.css";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -16,6 +16,11 @@ const SearchField: FC<Props> = ({ handleChangeSearch }) => {
     setValue(e.target.value);
   };
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleChangeSearch(value);
+  };
+
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -25,6 +30,7 @@ const SearchField: FC<Props> = ({ handleChangeSearch }) => {
 
   return (
     <Paper
+      onSubmit={handleSubmit}
       component="form"
       sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: "100%" }}>
       <InputBase
