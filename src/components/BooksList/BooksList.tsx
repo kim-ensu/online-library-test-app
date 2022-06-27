@@ -1,9 +1,11 @@
 import React, { FC, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "app/hooks";
 import BookCard from "components/BookCard/BookCard";
-import { setBooks } from "features/books/books-slice";
+import { addBooks, setBooks } from "features/books/books-slice";
 import { useFetchSearchedBooksQuery } from "features/books/books-api-slice";
 import LoadMoreButton from "components/LoadMoreButton/LoadMoreButton";
+import Button from "@mui/material/Button";
+import { setStartIndexForLoad } from "features/books/books-search-fields";
 
 type Props = {};
 
@@ -19,6 +21,11 @@ const BooksList: FC<Props> = (props) => {
     }
   }, [data]);
 
+  const handleClick = () => {
+    dispatch(setStartIndexForLoad(booksSearchValues.startIndexForLoad + 30));
+    dispatch(addBooks(data!));
+  };
+
   return (
     <>
       {booksList.length ? (
@@ -30,7 +37,9 @@ const BooksList: FC<Props> = (props) => {
             ))}
           </ul>
           {booksList.length && !isFetching ? (
-            <LoadMoreButton startIndex={booksList.length - 1} />
+            <Button onClick={handleClick} variant="contained">
+              Load More
+            </Button>
           ) : null}
         </>
       ) : (
