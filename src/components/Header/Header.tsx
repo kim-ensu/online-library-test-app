@@ -9,12 +9,14 @@ import { setBooks } from "features/books/books-slice";
 import { SelectChangeEvent } from "@mui/material/Select";
 
 const categories: IOptionsList = {
+  name: "category",
   id: "categories",
   label: "Categories",
   values: ["all", "art", "biography", "computers", "history", "medical", "poetry"],
 };
 
 const sortingBy: IOptionsList = {
+  name: "sortingBy",
   id: "sortingBy",
   label: "SortingBy",
   values: ["relevance", "newest"],
@@ -39,8 +41,18 @@ const Header: FC<Props> = (props) => {
         <SearchField />
 
         <div className="header-filters">
-          <OptionsList id={categories.id} label={categories.label} values={categories.values} />
-          <OptionsList id={sortingBy.id} label={sortingBy.label} values={sortingBy.values} />
+          <OptionsList
+            name={categories.name}
+            id={categories.id}
+            label={categories.label}
+            values={categories.values}
+          />
+          <OptionsList
+            name={sortingBy.name}
+            id={sortingBy.id}
+            label={sortingBy.label}
+            values={sortingBy.values}
+          />
         </div>
       </div>
     </div>

@@ -28,6 +28,7 @@ export interface ISearchFields {
 }
 
 export interface IOptionsList {
+  name: string;
   id: string;
   label: string;
   values: Array<string>;
