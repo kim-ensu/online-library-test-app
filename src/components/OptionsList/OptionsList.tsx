@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useAppDispatch } from "app/hooks";
-import { setCategory, setOrderBy } from "features/books/books-search-fields";
+import { setCategory, setOrderBy, setStartIndexForLoad } from "features/books/books-search-fields";
 
 type Props = {
   name: string;
@@ -22,6 +22,7 @@ const OptionsList: FC<Props> = ({ id, label, values, name }) => {
     event.target.name === "category"
       ? dispatch(setCategory(event.target.value))
       : dispatch(setOrderBy(event.target.value));
+    setStartIndexForLoad(0);
   };
 
   return (

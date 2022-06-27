@@ -13,7 +13,7 @@ const booksSlice = createSlice({
       state.booksArray = action.payload.items;
     },
     addBooks: (state, action: PayloadAction<IBooksData>) => {
-      state.booksArray.concat(action.payload.items);
+      state.booksArray = state.booksArray.concat(action.payload.items);
     },
   },
 });
