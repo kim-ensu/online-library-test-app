@@ -12,8 +12,11 @@ const booksSlice = createSlice({
     setBooks: (state, action: PayloadAction<IBooksData>) => {
       state.booksArray = action.payload.items;
     },
+    addBooks: (state, action: PayloadAction<IBooksData>) => {
+      state.booksArray.concat(action.payload.items);
+    },
   },
 });
 
-export const { setBooks } = booksSlice.actions;
+export const { setBooks, addBooks } = booksSlice.actions;
 export default booksSlice.reducer;
