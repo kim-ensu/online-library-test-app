@@ -1,32 +1,23 @@
 import React, { FC } from "react";
-import { useAppDispatch, useAppSelector } from "app/hooks";
-import { useFetchBooksQuery, useFetchCategoryQuery } from "features/books/books-slice";
-import { Book } from "features/books/books-slice";
+import { useAppSelector } from "app/hooks";
+import BookCard from "components/BookCard/BookCard";
 
 type Props = {};
 
 const BooksList: FC<Props> = (props) => {
-  const { data, isFetching } = useFetchBooksQuery();
-  console.log(data);
+  const booksList = useAppSelector((state) => state.books.booksArray);
 
-  // const booksArray = useAppSelector((state) => state.books.booksArray);
   return (
     <>
-      {data?.items ? (
-        <div>
-          <p>Number of books fetched: {data?.items.length}</p>
-          <div className="testList">
-            {data?.items.map((book: Book) => (
-              <div key={book.id}>
-                <p>{book.id}</p>
-                <h1>{book.volumeInfo.title}</h1>
-                <img src={book.volumeInfo.imageLinks.thumbnail} alt="" height={250} />
-              </div>
-            ))}
-          </div>
-        </div>
+      <span>Total Result {booksList.length}</span>
+      {booksList.length ? (
+        <ul className="bookslist">
+          {booksList.map(({ id, etag, volumeInfo }) => (
+            <BookCard key={id + etag} id={id} bookInfo={volumeInfo} />
+          ))}
+        </ul>
       ) : (
-        <p>Wait...</p>
+        <h1>Search and read your favourite books</h1>
       )}
     </>
   );
