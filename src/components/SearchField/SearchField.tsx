@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import "./SearchField.css";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -8,6 +8,8 @@ import SearchIcon from "@mui/icons-material/Search";
 type Props = {};
 
 const SearchField: FC<Props> = (props) => {
+  const [value, setValue] = useState<string>("");
+
   return (
     <Paper
       component="form"
@@ -16,6 +18,7 @@ const SearchField: FC<Props> = (props) => {
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Books"
         inputProps={{ "aria-label": "search google maps" }}
+        value={value}
       />
       <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
         <SearchIcon />
