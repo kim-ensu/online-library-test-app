@@ -18,6 +18,7 @@ const SearchField: FC<Props> = ({ handleChangeSearch }) => {
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       handleChangeSearch(value);
     }
   };
