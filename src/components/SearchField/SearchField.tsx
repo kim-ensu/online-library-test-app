@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEventHandler } from "react";
+import React, { FC, useState, ChangeEvent } from "react";
 import "./SearchField.css";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -9,7 +9,7 @@ type Props = {};
 
 const SearchField: FC<Props> = (props) => {
   const [value, setValue] = useState<string>("");
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
