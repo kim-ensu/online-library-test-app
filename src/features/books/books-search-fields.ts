@@ -5,7 +5,8 @@ const initialState: ISearchFields = {
   searchField: "",
   category: "all",
   sortingBy: "relevance",
-  booksLoaded: 30,
+  startIndexForLoad: 0,
+  amountToLoad: 30,
 };
 
 const booksSearchFieldsSlice = createSlice({

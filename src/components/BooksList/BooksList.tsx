@@ -29,7 +29,9 @@ const BooksList: FC<Props> = (props) => {
               <BookCard key={id + etag} id={id} bookInfo={volumeInfo} />
             ))}
           </ul>
-          {booksList.length && !isFetching ? <LoadMoreButton /> : null}
+          {booksList.length && !isFetching ? (
+            <LoadMoreButton maxLoaded={booksSearchValues.booksLoaded} />
+          ) : null}
         </>
       ) : (
         <h1>Search and read your favourite books</h1>
