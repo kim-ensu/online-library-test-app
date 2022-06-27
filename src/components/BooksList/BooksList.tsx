@@ -14,12 +14,6 @@ const BooksList: FC<Props> = (props) => {
   const booksSearchValues = useAppSelector((state) => state.booksSearchFields);
   const { data, isFetching } = useFetchSearchedBooksQuery(booksSearchValues);
 
-  useEffect(() => {
-    if (booksSearchValues.searchField || !isFetching) {
-      dispatch(setBooks(data!));
-    }
-  }, [data]);
-
   const handleClick = () => {
     dispatch(setStartIndexForLoad(booksSearchValues.startIndexForLoad + 30));
     dispatch(addBooks(data!));
