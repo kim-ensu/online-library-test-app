@@ -7,11 +7,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useAppDispatch } from "app/hooks";
 import { setSearchField } from "features/books/books-search-fields";
 
-type Props = {
-  handleChangeSearch: (e: string) => void;
-};
+type Props = {};
 
-const SearchField: FC<Props> = ({ handleChangeSearch }) => {
+const SearchField: FC<Props> = () => {
   const [value, setValue] = useState<string>("");
   const dispatch = useAppDispatch();
 

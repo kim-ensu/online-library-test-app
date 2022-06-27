@@ -25,29 +25,7 @@ type Props = {};
 const Header: FC<Props> = (props) => {
   const dispatch = useAppDispatch();
 
-  const [searchValues, setSearchValues] = useState<ISearchFields>({
-    searchField: "flowers",
-    category: "all",
-    sortingBy: "relevance",
-    booksLoaded: 30,
-  });
-
   const { data, isFetching } = useFetchSearchedBooksQuery(searchValues);
-
-  const handleChangeSearch = (searchText: string) => {
-    setSearchValues({
-      ...searchValues,
-      searchField: searchText,
-    });
-  };
-
-  const handleChangeOptions = (e: SelectChangeEvent): void => {
-    const { name, value } = e.target;
-    setSearchValues({
-      ...searchValues,
-      [name]: value,
-    });
-  };
 
   useEffect(() => {
     if (!isFetching) {
@@ -58,23 +36,11 @@ const Header: FC<Props> = (props) => {
   return (
     <div className="header">
       <div className="header-content-wrp">
-        <SearchField handleChangeSearch={handleChangeSearch} />
+        <SearchField />
 
         <div className="header-filters">
-          <OptionsList
-            name="category"
-            id={categories.id}
-            label={categories.label}
-            values={categories.values}
-            handleChangeOptions={handleChangeOptions}
-          />
-          <OptionsList
-            name="sortingBy"
-            id={sortingBy.id}
-            label={sortingBy.label}
-            values={sortingBy.values}
-            handleChangeOptions={handleChangeOptions}
-          />
+          <OptionsList id={categories.id} label={categories.label} values={categories.values} />
+          <OptionsList id={sortingBy.id} label={sortingBy.label} values={sortingBy.values} />
         </div>
       </div>
     </div>
