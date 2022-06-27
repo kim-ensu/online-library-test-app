@@ -14,7 +14,7 @@ export const apiSlice = createApi({
         query({ searchField, category, sortingBy, booksLoaded }) {
           return `volumes?q=${searchField}${
             category === "all" ? "" : `+subject:${category}`
-          }&orderBy:${sortingBy}&maxResults=${booksLoaded}&key=${BOOKS_API_KEY}`;
+          }&orderBy=${sortingBy}&maxResults=${booksLoaded}&key=${BOOKS_API_KEY}`;
         },
       }),
     };
