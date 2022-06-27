@@ -6,6 +6,7 @@ import { ISearchFields, IOptionsList } from "interfaces";
 import { useFetchSearchedBooksQuery } from "features/books/books-api-slice";
 import { useAppDispatch } from "app/hooks";
 import { getBooks } from "features/books/books-slice";
+import { SelectChangeEvent } from "@mui/material/Select";
 
 const categories: IOptionsList = {
   id: "categories",
@@ -41,6 +42,14 @@ const Header: FC<Props> = (props) => {
     });
   };
 
+  const handleChangeOptions = (e: SelectChangeEvent): void => {
+    const { name, value } = e.target;
+    setSearchValues({
+      ...searchValues,
+      [name]: value,
+    });
+  };
+
   useEffect(() => {
     if (!isFetching) {
       dispatch(getBooks(data!));
@@ -58,12 +67,14 @@ const Header: FC<Props> = (props) => {
             id={categories.id}
             label={categories.label}
             values={categories.values}
+            handleChangeOptions={handleChangeOptions}
           />
           <OptionsList
             name="sortingBy"
             id={sortingBy.id}
             label={sortingBy.label}
             values={sortingBy.values}
+            handleChangeOptions={handleChangeOptions}
           />
         </div>
       </div>

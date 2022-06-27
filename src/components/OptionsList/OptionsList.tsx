@@ -9,13 +9,15 @@ type Props = {
   id: string;
   label: string;
   values: Array<string>;
+  handleChangeOptions: (e: SelectChangeEvent) => void;
 };
 
-const OptionsList: FC<Props> = ({ id, label, values }) => {
+const OptionsList: FC<Props> = ({ id, label, values, name, handleChangeOptions }) => {
   const [currentValue, setCurrentValue] = useState<string>(values[0]);
 
   const handleChange = (event: SelectChangeEvent): void => {
     setCurrentValue(event.target.value);
+    handleChangeOptions(event);
   };
 
   return (
@@ -23,6 +25,7 @@ const OptionsList: FC<Props> = ({ id, label, values }) => {
       <label htmlFor={id}>{label}</label>
       <FormControl id={id} sx={{ m: 1, minWidth: 120, backgroundColor: "white" }}>
         <Select
+          name={name}
           value={currentValue}
           onChange={handleChange}
           displayEmpty
