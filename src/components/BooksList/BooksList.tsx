@@ -1,11 +1,22 @@
-import React, { FC } from "react";
-import { useAppSelector } from "app/hooks";
+import React, { FC, useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "app/hooks";
 import BookCard from "components/BookCard/BookCard";
+import { setBooks } from "features/books/books-slice";
+import { useFetchSearchedBooksQuery } from "features/books/books-api-slice";
 
 type Props = {};
 
 const BooksList: FC<Props> = (props) => {
+  const dispatch = useAppDispatch();
   const booksList = useAppSelector((state) => state.books.booksArray);
+  const booksSearchValues = useAppSelector((state) => state.booksSearchFields);
+  const { data, isFetching } = useFetchSearchedBooksQuery(booksSearchValues);
+
+  useEffect(() => {
+    if (!isFetching) {
+      dispatch(setBooks(data!));
+    }
+  }, [data]);
 
   return (
     <>

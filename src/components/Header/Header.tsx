@@ -4,7 +4,7 @@ import SearchField from "components/SearchField/SearchField";
 import OptionsList from "components/OptionsList/OptionsList";
 import { ISearchFields, IOptionsList } from "interfaces";
 import { useFetchSearchedBooksQuery } from "features/books/books-api-slice";
-import { useAppDispatch } from "app/hooks";
+import { useAppDispatch, useAppSelector } from "app/hooks";
 import { setBooks } from "features/books/books-slice";
 import { SelectChangeEvent } from "@mui/material/Select";
 
@@ -25,16 +25,6 @@ const sortingBy: IOptionsList = {
 type Props = {};
 
 const Header: FC<Props> = (props) => {
-  const dispatch = useAppDispatch();
-
-  const { data, isFetching } = useFetchSearchedBooksQuery(searchValues);
-
-  useEffect(() => {
-    if (!isFetching) {
-      dispatch(setBooks(data!));
-    }
-  }, [data]);
-
   return (
     <div className="header">
       <div className="header-content-wrp">
