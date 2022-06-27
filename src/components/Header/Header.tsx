@@ -5,7 +5,7 @@ import OptionsList from "components/OptionsList/OptionsList";
 import { ISearchFields, IOptionsList } from "interfaces";
 import { useFetchSearchedBooksQuery } from "features/books/books-api-slice";
 import { useAppDispatch } from "app/hooks";
-import { getBooks } from "features/books/books-slice";
+import { setBooks } from "features/books/books-slice";
 import { SelectChangeEvent } from "@mui/material/Select";
 
 const categories: IOptionsList = {
@@ -51,7 +51,7 @@ const Header: FC<Props> = (props) => {
 
   useEffect(() => {
     if (!isFetching) {
-      dispatch(getBooks(data!));
+      dispatch(setBooks(data!));
     }
   }, [data]);
 
