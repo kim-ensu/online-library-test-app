@@ -34,11 +34,10 @@ const Header: FC<Props> = (props) => {
 
   const { data, isFetching } = useFetchSearchedBooksQuery(searchValues);
 
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    const { name, value } = e.target;
+  const handleChangeSearch = (searchText: string) => {
     setSearchValues({
       ...searchValues,
-      [name]: value,
+      searchField: searchText,
     });
   };
 
@@ -59,7 +58,7 @@ const Header: FC<Props> = (props) => {
   return (
     <div className="header">
       <div className="header-content-wrp">
-        <SearchField name="searchField" />
+        <SearchField handleChangeSearch={handleChangeSearch} />
 
         <div className="header-filters">
           <OptionsList
