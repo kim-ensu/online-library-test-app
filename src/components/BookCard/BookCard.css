@@ -26,6 +26,7 @@
 .bookcard-title {
   color: #000326;
   font-weight: 700;
+  margin: 6px 0;
 }
 
 .bookcard-author {
