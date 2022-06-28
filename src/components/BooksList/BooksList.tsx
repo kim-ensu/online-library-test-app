@@ -22,7 +22,6 @@ const BooksList: FC<Props> = (props) => {
       dispatch(setBooks(data!));
     } else if (booksSearchValues.startIndexForLoad && booksList.length && !isFetching) {
       dispatch(addBooks(data!));
-      console.log(isFetching);
     }
   }, [booksSearchValues, data]);
 
