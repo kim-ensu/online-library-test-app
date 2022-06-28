@@ -5,6 +5,14 @@
   background-color: #F3F2F1;
 }
 
+.bookcard-img {
+  margin-top: 20px;
+}
+
+.bookcard-text-container {
+  margin: 20px 10px;
+}
+
 .bookcard-category, .bookcard-title, .bookcard-author {
   display: block;
   text-align: left;

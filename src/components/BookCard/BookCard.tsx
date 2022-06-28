@@ -19,28 +19,29 @@ const BookCard: FC<Props> = ({ id, bookInfo: { imageLinks, title, categories, au
       {imageLinks === undefined ? (
         <i>PLACEHOLDER</i>
       ) : (
-        <img src={imageLinks.thumbnail} alt={title} />
+        <img className="bookcard-img" src={imageLinks.thumbnail} alt={title} />
       )}
+      <div className="bookcard-text-container">
+        {categories === undefined ? (
+          <div></div>
+        ) : (
+          <span className="bookcard-category">{categories[0]}</span>
+        )}
 
-      {categories === undefined ? (
-        <div></div>
-      ) : (
-        <span className="bookcard-category">{categories[0]}</span>
-      )}
+        <span className="bookcard-title">{title}</span>
 
-      <span className="bookcard-title">{title}</span>
-
-      {authors === undefined ? (
-        <div></div>
-      ) : (
-        <ul>
-          {authors.map((author, index) => (
-            <li className="bookcard-author" key={id + author}>
-              {author}
-            </li>
-          ))}
-        </ul>
-      )}
+        {authors === undefined ? (
+          <div></div>
+        ) : (
+          <ul>
+            {authors.map((author, index) => (
+              <li className="bookcard-author" key={id + author}>
+                {author}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </li>
   );
 };
