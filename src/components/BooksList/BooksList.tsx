@@ -5,8 +5,8 @@ import { addBooks, setBooks } from "features/books/books-slice";
 import { useFetchSearchedBooksQuery } from "features/books/books-api-slice";
 import Button from "@mui/material/Button";
 import { setStartIndexForLoad } from "features/books/books-search-fields";
-import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 type Props = {};
 
@@ -21,6 +21,7 @@ const BooksList: FC<Props> = (props) => {
       dispatch(setBooks(data!));
     } else if (booksSearchValues.startIndexForLoad && booksList.length && !isFetching) {
       dispatch(addBooks(data!));
+      console.log(isFetching);
     }
   }, [booksSearchValues, data]);
 
@@ -38,11 +39,11 @@ const BooksList: FC<Props> = (props) => {
               <BookCard key={id + etag} id={id} bookInfo={volumeInfo} />
             ))}
           </ul>
-          {booksList.length && !isFetching ? (
+          {booksList.length ? (
             isFetching ? (
-              <Stack sx={{ color: "grey.500" }} spacing={2} direction="row">
-                <CircularProgress color="inherit" />
-              </Stack>
+              <Box sx={{ display: "flex" }}>
+                <CircularProgress />
+              </Box>
             ) : (
               <Button onClick={handleClick} variant="contained">
                 Load More
@@ -50,6 +51,10 @@ const BooksList: FC<Props> = (props) => {
             )
           ) : null}
         </>
+      ) : isFetching ? (
+        <Box sx={{ display: "flex" }}>
+          <CircularProgress />
+        </Box>
       ) : (
         <h1>Search and read your favourite books</h1>
       )}
