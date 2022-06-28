@@ -6,12 +6,14 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { useAppDispatch } from "app/hooks";
 import { setSearchField } from "features/books/books-search-fields";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const SearchField: FC<Props> = () => {
   const [value, setValue] = useState<string>("");
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setValue(e.target.value);
@@ -20,12 +22,14 @@ const SearchField: FC<Props> = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(setSearchField(value));
+    navigate("../", { replace: true });
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
       dispatch(setSearchField(value));
+      navigate("../", { replace: true });
     }
   };
 
