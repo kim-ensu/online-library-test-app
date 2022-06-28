@@ -30,11 +30,7 @@ const SearchField: FC<Props> = () => {
   };
 
   return (
-    <Paper
-      onSubmit={handleSubmit}
-      component="form"
-      className="search-field"
-      sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: "100%" }}>
+    <Paper onSubmit={handleSubmit} component="form" className="search-field">
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Books"
