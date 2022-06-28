@@ -19,3 +19,14 @@ main > span {
   font-weight: 500;
   margin: 15px 0;
 }
+
+@media only screen and (min-width: 576px) {
+  .bookslist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 240px);
+    justify-content: space-between;
+    max-width: 1240px;
+    justify-content: center;
+    gap: 20px
+  }
+}
