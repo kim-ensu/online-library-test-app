@@ -26,9 +26,11 @@ const OptionsList: FC<Props> = ({ id, label, values, name }) => {
   };
 
   return (
-    <div>
-      <label htmlFor={id}>{label}</label>
-      <FormControl id={id} sx={{ m: 1, minWidth: 120, backgroundColor: "white" }}>
+    <div className="filter-wrap">
+      <label className="filter-label" htmlFor={id}>
+        {label}
+      </label>
+      <FormControl id={id} className="form-control">
         <Select
           name={name}
           value={currentValue}

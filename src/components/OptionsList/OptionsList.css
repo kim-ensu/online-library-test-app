@@ -1,0 +1,15 @@
+.filter-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.filter-label {
+  color: #fff;
+}
+
+.form-control {
+  background-color: white;
+  border-radius: 8px;
+  max-height: 20;
+}
