@@ -1,9 +1,40 @@
 .bookcard {
   border: 1px solid black;
-  margin: 15px auto;
-  width: 80%;
+  margin: 0 auto 20px;
+  background-color: #F3F2F1;
+  width: 240px;
 }
 
-.bookcard-category, .bookcard-title {
+.bookcard-img {
+  margin-top: 20px;
+}
+
+.bookcard-text-container {
+  margin: 20px 10px;
+}
+
+.bookcard-category, .bookcard-title, .bookcard-author {
   display: block;
+  text-align: left;
+}
+
+.bookcard-category {
+  color: #A1A9B7;
+  text-decoration: underline;
+}
+
+.bookcard-title {
+  color: #000326;
+  font-weight: 700;
+  margin: 6px 0;
+}
+
+.bookcard-author {
+  color: #C2C1C1;
+}
+
+@media only screen and (min-width: 576px) {
+  .bookcard {
+    margin: 0;
+  }
 }

@@ -24,6 +24,7 @@ const Header: FC<Props> = (props) => {
   return (
     <div className="header">
       <div className="header-content-wrp">
+        <h1 className="header-text">Search for books</h1>
         <SearchField />
 
         <div className="header-filters">

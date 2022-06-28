@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from "react";
+import "./BooksList.css";
 import { useAppSelector, useAppDispatch } from "app/hooks";
 import BookCard from "components/BookCard/BookCard";
 import { addBooks, setBooks } from "features/books/books-slice";
@@ -30,10 +31,10 @@ const BooksList: FC<Props> = (props) => {
   };
 
   return (
-    <>
+    <main className="main">
       {booksList.length ? (
         <>
-          <span>Total Result {booksList.length}</span>
+          <span>Found {booksList.length} Results</span>
           <ul className="bookslist">
             {booksList.map(({ id, etag, volumeInfo }) => (
               <BookCard key={id + etag} id={id} bookInfo={volumeInfo} />
@@ -41,24 +42,28 @@ const BooksList: FC<Props> = (props) => {
           </ul>
           {booksList.length ? (
             isFetching ? (
-              <Box sx={{ display: "flex" }}>
+              <Box sx={{ display: "flex", justifyContent: "center", m: "20px 0" }}>
                 <CircularProgress />
               </Box>
             ) : (
-              <Button onClick={handleClick} variant="contained">
+              <Button
+                sx={{ m: "20px 0" }}
+                onClick={handleClick}
+                color="success"
+                variant="contained">
                 Load More
               </Button>
             )
           ) : null}
         </>
       ) : isFetching ? (
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex", justifyContent: "center", m: "20px 0" }}>
           <CircularProgress />
         </Box>
       ) : (
-        <h1>Search and read your favourite books</h1>
+        <h1 className="bookslist-header">Search and read your favourite books</h1>
       )}
-    </>
+    </main>
   );
 };
 
