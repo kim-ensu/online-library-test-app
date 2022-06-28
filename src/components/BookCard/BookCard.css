@@ -1,9 +1,25 @@
 .bookcard {
   border: 1px solid black;
-  margin: 15px auto;
+  margin: 0 auto;
   width: 80%;
+  background-color: #F3F2F1;
 }
 
-.bookcard-category, .bookcard-title {
+.bookcard-category, .bookcard-title, .bookcard-author {
   display: block;
+  text-align: left;
+}
+
+.bookcard-category {
+  color: #A1A9B7;
+  text-decoration: underline;
+}
+
+.bookcard-title {
+  color: #000326;
+  font-weight: 700;
+}
+
+.bookcard-author {
+  color: #C2C1C1;
 }

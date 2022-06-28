@@ -35,7 +35,9 @@ const BookCard: FC<Props> = ({ id, bookInfo: { imageLinks, title, categories, au
       ) : (
         <ul>
           {authors.map((author, index) => (
-            <li key={id + author}>{author}</li>
+            <li className="bookcard-author" key={id + author}>
+              {author}
+            </li>
           ))}
         </ul>
       )}

@@ -12,3 +12,10 @@
   justify-content: center;
   padding-top: 30vh;
 }
+
+main > span {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 15px 0;
+}

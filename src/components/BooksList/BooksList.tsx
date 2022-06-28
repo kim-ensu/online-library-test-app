@@ -34,7 +34,7 @@ const BooksList: FC<Props> = (props) => {
     <main className="main">
       {booksList.length ? (
         <>
-          <span>Total Result {booksList.length}</span>
+          <span>Found {booksList.length} Results</span>
           <ul className="bookslist">
             {booksList.map(({ id, etag, volumeInfo }) => (
               <BookCard key={id + etag} id={id} bookInfo={volumeInfo} />
