@@ -42,18 +42,22 @@ const BooksList: FC<Props> = (props) => {
           </ul>
           {booksList.length ? (
             isFetching ? (
-              <Box sx={{ display: "flex" }}>
+              <Box sx={{ display: "flex", justifyContent: "center", m: "20px 0" }}>
                 <CircularProgress />
               </Box>
             ) : (
-              <Button onClick={handleClick} variant="contained">
+              <Button
+                sx={{ m: "20px 0" }}
+                onClick={handleClick}
+                color="success"
+                variant="contained">
                 Load More
               </Button>
             )
           ) : null}
         </>
       ) : isFetching ? (
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex", justifyContent: "center", m: "20px 0" }}>
           <CircularProgress />
         </Box>
       ) : (
