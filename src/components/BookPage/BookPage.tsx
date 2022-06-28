@@ -17,7 +17,11 @@ const BookPage: FC<Props> = (props) => {
         <img src={bookinfo?.volumeInfo.imageLinks.thumbnail} alt={bookinfo?.volumeInfo.title} />
       </div>
       <div className="bookpage-info-container">
-        <span className="bookpage-categories">Categories</span>
+        <span className="bookpage-categories">
+          {typeof bookinfo?.volumeInfo.categories === "string"
+            ? bookinfo?.volumeInfo.categories
+            : bookinfo?.volumeInfo.categories.join("/")}
+        </span>
         <h1 className="bookpage-title">Title</h1>
         <span className="bookpage-authors">Authors</span>
         <p className="bookpage-description">Description</p>
