@@ -8,19 +8,19 @@ type Props = {};
 const BookPage: FC<Props> = (props) => {
   let params = useParams();
   const bookinfo = useAppSelector((state) =>
-    state.books.booksArray.find((item) => item.id === params.name)
+    state.books.booksArray.find((item) => item.id === params.id)
   );
 
   return (
     <div className="bookpage">
       <div className="bookpage-image-container">
-        <img src="" alt="" />
+        <img src={bookinfo?.volumeInfo.imageLinks.thumbnail} alt={bookinfo?.volumeInfo.title} />
       </div>
       <div className="bookpage-info-container">
-        <span className="bookpage-categories"></span>
-        <h1 className="bookpage-title"></h1>
-        <span className="bookpage-authors"></span>
-        <p className="bookpage-description"></p>
+        <span className="bookpage-categories">Categories</span>
+        <h1 className="bookpage-title">Title</h1>
+        <span className="bookpage-authors">Authors</span>
+        <p className="bookpage-description">Description</p>
       </div>
     </div>
   );
