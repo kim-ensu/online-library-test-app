@@ -22,9 +22,13 @@ const BookPage: FC<Props> = (props) => {
             ? bookinfo?.volumeInfo.categories
             : bookinfo?.volumeInfo.categories.join("/")}
         </span>
-        <h1 className="bookpage-title">Title</h1>
-        <span className="bookpage-authors">Authors</span>
-        <p className="bookpage-description">Description</p>
+        <h1 className="bookpage-title">{bookinfo?.volumeInfo.title}</h1>
+        <span className="bookpage-authors">
+          {typeof bookinfo?.volumeInfo.authors === "string"
+            ? bookinfo?.volumeInfo.authors
+            : bookinfo?.volumeInfo.authors.join(", ")}
+        </span>
+        <p className="bookpage-description">{bookinfo?.volumeInfo.description}</p>
       </div>
     </div>
   );
