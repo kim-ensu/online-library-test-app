@@ -16,5 +16,55 @@
 
 .bookpage-title {
   font-size: 24px;
-  margin: 10px 0
+  margin-top: 10px;
+}
+
+.bookpage-authors {
+  color: #C2C1C1;
+  text-decoration: underline;
+}
+
+.bookpage-description {
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 20px;
+  max-width: 500px;
+}
+
+@media only screen and (min-width: 576px) {
+  .bookpage {
+    display: flex;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .bookpage-image-container {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 0.8;
+  }
+
+  .bookpage-info-container {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .bookpage-info-container {
+    padding-left: 50px;
+  }
+
+  .bookpage-categories {
+    margin-top: 30px;
+  }
+
+  .bookpage-title {
+    margin-top: 20px;
+  }
+
+  .bookpage-description {
+    margin-top: 40px;
+  }
 }
