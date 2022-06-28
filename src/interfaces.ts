@@ -24,10 +24,12 @@ export interface ISearchFields {
   searchField: string;
   category: string;
   sortingBy: string;
-  booksLoaded: number;
+  startIndexForLoad: number;
+  amountToLoad: number;
 }
 
 export interface IOptionsList {
+  name: string;
   id: string;
   label: string;
   values: Array<string>;

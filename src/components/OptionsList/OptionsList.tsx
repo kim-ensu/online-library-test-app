@@ -3,21 +3,26 @@ import "./OptionsList.css";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { useAppDispatch } from "app/hooks";
+import { setCategory, setOrderBy, setStartIndexForLoad } from "features/books/books-search-fields";
 
 type Props = {
   name: string;
   id: string;
   label: string;
   values: Array<string>;
-  handleChangeOptions: (e: SelectChangeEvent) => void;
 };
 
-const OptionsList: FC<Props> = ({ id, label, values, name, handleChangeOptions }) => {
+const OptionsList: FC<Props> = ({ id, label, values, name }) => {
   const [currentValue, setCurrentValue] = useState<string>(values[0]);
+  const dispatch = useAppDispatch();
 
   const handleChange = (event: SelectChangeEvent): void => {
     setCurrentValue(event.target.value);
-    handleChangeOptions(event);
+    event.target.name === "category"
+      ? dispatch(setCategory(event.target.value))
+      : dispatch(setOrderBy(event.target.value));
+    setStartIndexForLoad(0);
   };
 
   return (
