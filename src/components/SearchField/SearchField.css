@@ -1,7 +1,7 @@
 .search-field {
   padding: 2px 4px;
   display:flex;
-  align-items: center;
   width: 100%;
-  margin: 20px 0;
+  margin: 20px auto;
+  max-width: 700px;
 }
