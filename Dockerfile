@@ -14,7 +14,7 @@ RUN npm run build
 # NGINX Web Server
 FROM nginx:1.22-alpine as prod
 
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /code/build /usr/share/nginx/html
 
 EXPOSE 80
 
